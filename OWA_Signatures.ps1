@@ -13,19 +13,17 @@ $CertThumb = "PutYourCertThumbPrint"
 $TenantID = "PutYourTenantID"
 $OrganizationDomain = "PutYourPrincipalDomainName.onmicrosoft.com"
 
-#Adjust your Ldap filter query as you wich
-$LDAPFilter = '$_.AccountEnabled -like "True" -and $_.Mail -like "*cercena.com.br" -and $_.UserType -like "Member" -and $_.UserPrincipalName -like "*cercena.com.br"'
-
 #Local where is the script and html template file
 $DefaulWorkDir = "c:\Signature"
 
 #Connect to AzureAD and ExchangeOnline services
 Write-Output "Connecting to remote services ExchangeOnline and AzureAD"
-Connect-AzureAD -ApplicationId $AppID -CertificateThumbprint $CertThumb -TenantId $TenantID | Out-Null
-Connect-ExchangeOnline -AppId $AppID -CertificateThumbprint $CertThumb -Organization $OrganizationDomain -ShowBanner:$false | Out-Null
+Connect-AzureAD -ApplicationId $AppID -CertificateThumbprint $CertThumb -TenantId $TenantID
+Connect-ExchangeOnline -AppId $AppID -CertificateThumbprint $CertThumb -Organization $OrganizationDomain -ShowBanner:$false
 
 #Gets all users' data from Azure AD and saves it to an array.
-$users = (Get-AzureADUser -All $true | Where-Object {$LDAPFilter} | Select-Object DisplayName, JobTitle, TelephoneNumber, Mobile, Mail)
+#Adjust Where-Object as you wich
+$users = (Get-AzureADUser -All $true | Where-Object {$_.AccountEnabled -like "True" -and $_.Mail -like "*cercena.com.br" -and $_.UserType -like "Member" -and $_.UserPrincipalName -like "*cercena.com.br"} | Select-Object DisplayName, JobTitle, TelephoneNumber, Mobile, Mail)
 
 #Saves HTML code of a signature from the signature generator to a variable. Change the path to the location of your file.
 $HTMLsig = Get-Content "$DefaulWorkDir\Template_HTML.html" | out-string
