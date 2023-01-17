@@ -14,7 +14,7 @@ $TenantID = "PutYourTenantID"
 $OrganizationDomain = "PutYourPrincipalDomainName.onmicrosoft.com"
 
 #Adjust your Ldap filter query as you wich
-$LDAPFilter = '{$_.AccountEnabled -like "True" -and $_.Mail -like "*cercena.com.br" -and $_.UserType -like "Member" -and $_.UserPrincipalName -like "*cercena.com.br"}'
+$LDAPFilter = '$_.AccountEnabled -like "True" -and $_.Mail -like "*cercena.com.br" -and $_.UserType -like "Member" -and $_.UserPrincipalName -like "*cercena.com.br"'
 
 #Local where is the script and html template file
 $DefaulWorkDir = "c:\Signature"
@@ -25,7 +25,7 @@ Connect-AzureAD -ApplicationId $AppID -CertificateThumbprint $CertThumb -TenantI
 Connect-ExchangeOnline -AppId $AppID -CertificateThumbprint $CertThumb -Organization $OrganizationDomain -ShowBanner:$false | Out-Null
 
 #Gets all users' data from Azure AD and saves it to an array.
-$users = (Get-AzureADUser -All $true | Where-Object $LDAPFilter | Select-Object DisplayName, JobTitle, TelephoneNumber, Mobile, Mail)
+$users = (Get-AzureADUser -All $true | Where-Object {$LDAPFilter} | Select-Object DisplayName, JobTitle, TelephoneNumber, Mobile, Mail)
 
 #Saves HTML code of a signature from the signature generator to a variable. Change the path to the location of your file.
 $HTMLsig = Get-Content "$DefaulWorkDir\Template_HTML.html" | out-string
