@@ -47,7 +47,7 @@ Get-ChildItem -Path cert:\CurrentUser\My
 - %%Mobile%% =          User mobile phone number
 - %%Mail%% =            User email address
 
-*You can make your own HTML template as you wich, just make sure to adjust variables that you want to replace.*
+*You can make your own HTML template as you wish, just make sure to adjust variables that you want to replace.*
 
 **5st -** Automatize script
 
