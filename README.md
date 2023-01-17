@@ -9,7 +9,15 @@ Powershell requisites/modules:
 - ExchangeOnlineManagement
 
 Office/Microsoft 365 requirements:
+- The Outlook Roaming Signature must be disable on your tenant, open a ticket with Microsoft support team to disable this feature.
+
+https://learn.microsoft.com/en-us/powershell/module/exchange/set-mailboxmessageconfiguration?view=exchange-ps#-signaturehtml
+
+*Note: This parameter doesn't work if the Outlook roaming signatures feature is enabled in your organization. Currently, the only way to make this parameter work again is to open a support ticket and ask to have Outlook roaming signatures disabled in your organization.*
+
 - AppID access
+
+
 
 **How to run:**
 
