@@ -1,14 +1,15 @@
 # O365owaSignature
 Powershell script to set and automatize Microsoft 365 OWA mail signature with ldap data and html template.
 
-System requisites:
+<ins>System requisites:</ins>
+
 This script was created to run with any version of powershell, on this implementation we have tested with powershell 7.3.1
 
-Powershell requisites/modules:
+<ins>Powershell requisites/modules:</ins>
 - AzureAD
 - ExchangeOnlineManagement
 
-Office/Microsoft 365 requirements:
+<ins>Office/Microsoft 365 requirements:</ins>
 - The Outlook Roaming Signature must be disable on your tenant, open a ticket with Microsoft support team to disable this feature.
 
 https://learn.microsoft.com/en-us/powershell/module/exchange/set-mailboxmessageconfiguration?view=exchange-ps#-signaturehtml
@@ -17,9 +18,7 @@ https://learn.microsoft.com/en-us/powershell/module/exchange/set-mailboxmessagec
 
 - AppID access
 
-
-
-**How to run:**
+<ins>**How to run:**</ins>
 
 **1st -** Create a AppID account ad self signed certificate.
 
@@ -52,4 +51,4 @@ Get-ChildItem -Path cert:\CurrentUser\My
 
 **5st -** Automatize script
 
-You can set your script to run automatically, with job task in Windows Task Manager..
+You can set your script to run automatically, use one job task in Windows Task Manager..
