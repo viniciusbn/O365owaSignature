@@ -22,7 +22,7 @@ Connect-AzureAD -ApplicationId $AppID -CertificateThumbprint $CertThumb -TenantI
 Connect-ExchangeOnline -AppId $AppID -CertificateThumbprint $CertThumb -Organization $OrganizationDomain -ShowBanner:$false
 
 #Gets all users' data from Azure AD and saves it to an array.
-#Adjust Where-Object as you wich
+#Adjust Where-Object as you wish
 $users = (Get-AzureADUser -All $true | Where-Object {$_.AccountEnabled -like "True" -and $_.Mail -like "*cercena.com.br" -and $_.UserType -like "Member" -and $_.UserPrincipalName -like "*cercena.com.br"} | Select-Object DisplayName, JobTitle, TelephoneNumber, Mobile, Mail)
 
 #Saves HTML code of a signature from the signature generator to a variable. Change the path to the location of your file.
