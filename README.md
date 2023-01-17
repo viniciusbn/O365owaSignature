@@ -16,5 +16,20 @@ Microsoft documentation
 https://learn.microsoft.com/en-us/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps
 
 
-2st - Get the cert thumbprint from 1st step and hardcode this on the script line
+2st - Get the cert thumbprint from 1st step and hardcode it on the $CertThumb varible.
+
+3st - Set others varibles as needed on your deployment.
+
+$AppID = "App ID generated on 1st step"
+$CertThumb = "Certificate thumbprint generated on 1st step"
+$TenantID = "Get it from your Azure console"
+$OrganizationDomain = "Your primary domain .onmicrosoft.com"
+
+4st - Customie the varibles as needed on Template_HTML.html
+
+- %%DisplayName%% = User complete name
+- %%JobTitle%% = User jot title
+- %%TelephoneNumber%% = On our enviroment this is the branch line
+- %%Mobile%% = User mobile phone number
+- %%Mail%% = User email address
 
