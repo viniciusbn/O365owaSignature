@@ -16,7 +16,7 @@ Microsoft documentation
 https://learn.microsoft.com/en-us/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps
 
 
-2st - Get the cert thumbprint from 1st step and hardcode it on the $CertThumb varible.
+2st - Get the certificate thumbprint from 1st step and hardcode it on the $CertThumb varible.
 
 3st - Set others varibles as needed on your deployment.
 
@@ -33,3 +33,8 @@ https://learn.microsoft.com/en-us/powershell/exchange/app-only-auth-powershell-v
 - %%Mobile%% =          User mobile phone number
 - %%Mail%% =            User email address
 
+You can make your own HTML template as you needed, just make sure to adjust variables that you want to replace.
+
+5st - Automatize script
+
+You can set your script to run automatically with task job in Windows Task Manager..
